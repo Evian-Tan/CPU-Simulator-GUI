@@ -391,5 +391,37 @@ namespace CpuSchedulingWinForms
             listView1.Columns.Add("Waiting Time", 100, HorizontalAlignment.Center);
             listView1.Columns.Add("Turnaround Time", 120, HorizontalAlignment.Center);
         }
+
+        private void btnHRRN_Click(object sender, EventArgs e)
+        {
+            if (txtProcess.Text == "")
+            {
+                MessageBox.Show("Enter number of processes", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtProcess.Focus();
+                return;
+            }
+            Algorithms.hrrnAlgorithm(txtProcess.Text);
+            int numberOfProcess = int.Parse(txtProcess.Text);
+            if (numberOfProcess <= 10)
+            {
+                this.progressBar1.Increment(4);
+                this.progressBar1.SetState(1);
+                this.progressBar2.Increment(13);
+                this.progressBar2.SetState(1);
+            }
+            else
+            {
+                this.progressBar1.Increment(15);
+                this.progressBar1.SetState(1);
+                this.progressBar2.Increment(38);
+                this.progressBar2.SetState(3);
+            }
+            listView1.Clear();
+            listView1.View = View.Details;
+            listView1.Columns.Add("Process ID", 100, HorizontalAlignment.Center);
+            listView1.Columns.Add("Completion Time", 120, HorizontalAlignment.Center);
+            listView1.Columns.Add("Waiting Time", 100, HorizontalAlignment.Center);
+            listView1.Columns.Add("Turnaround Time", 120, HorizontalAlignment.Center);
+        }
     }
 }

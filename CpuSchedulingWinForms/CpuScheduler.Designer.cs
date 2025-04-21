@@ -49,6 +49,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cpuSchedulerTab = new System.Windows.Forms.TabPage();
+            this.btnSRTF = new System.Windows.Forms.Button();
             this.btnRoundRobin = new System.Windows.Forms.Button();
             this.restartApp = new System.Windows.Forms.Label();
             this.btnPriority = new System.Windows.Forms.Button();
@@ -63,7 +64,7 @@
             this.pictureBoxCodeOutput = new System.Windows.Forms.PictureBox();
             this.btnBarcode = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnSRTF = new System.Windows.Forms.Button();
+            this.btnHRRN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabSelection.SuspendLayout();
@@ -87,7 +88,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnDashBoard);
             this.panel1.Location = new System.Drawing.Point(2, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(245, 607);
             this.panel1.TabIndex = 0;
@@ -96,7 +97,7 @@
             // 
             this.sidePanel.BackColor = System.Drawing.Color.SeaGreen;
             this.sidePanel.Location = new System.Drawing.Point(0, 223);
-            this.sidePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sidePanel.Margin = new System.Windows.Forms.Padding(4);
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(15, 62);
             this.sidePanel.TabIndex = 4;
@@ -111,7 +112,7 @@
             this.btnProductCode.Image = ((System.Drawing.Image)(resources.GetObject("btnProductCode.Image")));
             this.btnProductCode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProductCode.Location = new System.Drawing.Point(16, 357);
-            this.btnProductCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnProductCode.Margin = new System.Windows.Forms.Padding(4);
             this.btnProductCode.Name = "btnProductCode";
             this.btnProductCode.Size = new System.Drawing.Size(225, 55);
             this.btnProductCode.TabIndex = 4;
@@ -141,7 +142,7 @@
             this.btnCpuScheduler.Image = ((System.Drawing.Image)(resources.GetObject("btnCpuScheduler.Image")));
             this.btnCpuScheduler.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCpuScheduler.Location = new System.Drawing.Point(16, 294);
-            this.btnCpuScheduler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCpuScheduler.Margin = new System.Windows.Forms.Padding(4);
             this.btnCpuScheduler.Name = "btnCpuScheduler";
             this.btnCpuScheduler.Size = new System.Drawing.Size(225, 55);
             this.btnCpuScheduler.TabIndex = 2;
@@ -157,7 +158,7 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.No;
             this.pictureBox1.Location = new System.Drawing.Point(0, -1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(246, 179);
             this.pictureBox1.TabIndex = 0;
@@ -175,7 +176,7 @@
             this.btnDashBoard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashBoard.Image")));
             this.btnDashBoard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDashBoard.Location = new System.Drawing.Point(16, 223);
-            this.btnDashBoard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDashBoard.Margin = new System.Windows.Forms.Padding(4);
             this.btnDashBoard.Name = "btnDashBoard";
             this.btnDashBoard.Size = new System.Drawing.Size(225, 62);
             this.btnDashBoard.TabIndex = 1;
@@ -191,7 +192,7 @@
             this.tabSelection.Controls.Add(this.productTab);
             this.tabSelection.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabSelection.Location = new System.Drawing.Point(256, 1);
-            this.tabSelection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabSelection.Margin = new System.Windows.Forms.Padding(4);
             this.tabSelection.Name = "tabSelection";
             this.tabSelection.SelectedIndex = 0;
             this.tabSelection.Size = new System.Drawing.Size(764, 608);
@@ -212,9 +213,9 @@
             this.dashBoardTab.Controls.Add(this.pictureBox2);
             this.dashBoardTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashBoardTab.Location = new System.Drawing.Point(4, 32);
-            this.dashBoardTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dashBoardTab.Margin = new System.Windows.Forms.Padding(4);
             this.dashBoardTab.Name = "dashBoardTab";
-            this.dashBoardTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dashBoardTab.Padding = new System.Windows.Forms.Padding(4);
             this.dashBoardTab.Size = new System.Drawing.Size(756, 572);
             this.dashBoardTab.TabIndex = 0;
             this.dashBoardTab.Text = "Dashboard";
@@ -226,7 +227,7 @@
             this.listView1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(112, 89);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(520, 198);
             this.listView1.TabIndex = 10;
@@ -235,7 +236,7 @@
             // progressBar2
             // 
             this.progressBar2.Location = new System.Drawing.Point(190, 361);
-            this.progressBar2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar2.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(442, 21);
             this.progressBar2.TabIndex = 9;
@@ -254,7 +255,7 @@
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(190, 309);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(442, 21);
             this.progressBar1.TabIndex = 7;
@@ -281,7 +282,7 @@
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExit.Location = new System.Drawing.Point(626, 8);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(116, 40);
             this.btnExit.TabIndex = 5;
@@ -296,7 +297,7 @@
             this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.Location = new System.Drawing.Point(368, 406);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(384, 166);
             this.pictureBox3.TabIndex = 3;
@@ -308,7 +309,7 @@
             this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox4.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(752, 410);
             this.pictureBox4.TabIndex = 2;
@@ -321,7 +322,7 @@
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.Location = new System.Drawing.Point(0, 406);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(372, 166);
             this.pictureBox2.TabIndex = 0;
@@ -332,6 +333,7 @@
             this.cpuSchedulerTab.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.cpuSchedulerTab.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cpuSchedulerTab.BackgroundImage")));
             this.cpuSchedulerTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.cpuSchedulerTab.Controls.Add(this.btnHRRN);
             this.cpuSchedulerTab.Controls.Add(this.btnSRTF);
             this.cpuSchedulerTab.Controls.Add(this.btnRoundRobin);
             this.cpuSchedulerTab.Controls.Add(this.restartApp);
@@ -342,12 +344,22 @@
             this.cpuSchedulerTab.Controls.Add(this.labelProcess);
             this.cpuSchedulerTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cpuSchedulerTab.Location = new System.Drawing.Point(4, 32);
-            this.cpuSchedulerTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cpuSchedulerTab.Margin = new System.Windows.Forms.Padding(4);
             this.cpuSchedulerTab.Name = "cpuSchedulerTab";
-            this.cpuSchedulerTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cpuSchedulerTab.Padding = new System.Windows.Forms.Padding(4);
             this.cpuSchedulerTab.Size = new System.Drawing.Size(756, 572);
             this.cpuSchedulerTab.TabIndex = 1;
             this.cpuSchedulerTab.Text = "CPU Scheduler";
+            // 
+            // btnSRTF
+            // 
+            this.btnSRTF.Location = new System.Drawing.Point(24, 169);
+            this.btnSRTF.Name = "btnSRTF";
+            this.btnSRTF.Size = new System.Drawing.Size(172, 111);
+            this.btnSRTF.TabIndex = 13;
+            this.btnSRTF.Text = "SRTF";
+            this.btnSRTF.UseVisualStyleBackColor = true;
+            this.btnSRTF.Click += new System.EventHandler(this.btnSRTF_Click);
             // 
             // btnRoundRobin
             // 
@@ -359,7 +371,7 @@
             this.btnRoundRobin.Image = ((System.Drawing.Image)(resources.GetObject("btnRoundRobin.Image")));
             this.btnRoundRobin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRoundRobin.Location = new System.Drawing.Point(370, 385);
-            this.btnRoundRobin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRoundRobin.Margin = new System.Windows.Forms.Padding(4);
             this.btnRoundRobin.Name = "btnRoundRobin";
             this.btnRoundRobin.Size = new System.Drawing.Size(128, 62);
             this.btnRoundRobin.TabIndex = 12;
@@ -393,7 +405,7 @@
             this.btnPriority.Image = ((System.Drawing.Image)(resources.GetObject("btnPriority.Image")));
             this.btnPriority.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPriority.Location = new System.Drawing.Point(520, 385);
-            this.btnPriority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPriority.Margin = new System.Windows.Forms.Padding(4);
             this.btnPriority.Name = "btnPriority";
             this.btnPriority.Size = new System.Drawing.Size(160, 62);
             this.btnPriority.TabIndex = 10;
@@ -413,7 +425,7 @@
             this.btnSJF.Image = ((System.Drawing.Image)(resources.GetObject("btnSJF.Image")));
             this.btnSJF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSJF.Location = new System.Drawing.Point(172, 385);
-            this.btnSJF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSJF.Margin = new System.Windows.Forms.Padding(4);
             this.btnSJF.Name = "btnSJF";
             this.btnSJF.Size = new System.Drawing.Size(176, 62);
             this.btnSJF.TabIndex = 9;
@@ -433,7 +445,7 @@
             this.btnFCFS.Image = ((System.Drawing.Image)(resources.GetObject("btnFCFS.Image")));
             this.btnFCFS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFCFS.Location = new System.Drawing.Point(24, 385);
-            this.btnFCFS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFCFS.Margin = new System.Windows.Forms.Padding(4);
             this.btnFCFS.Name = "btnFCFS";
             this.btnFCFS.Size = new System.Drawing.Size(126, 62);
             this.btnFCFS.TabIndex = 8;
@@ -447,7 +459,7 @@
             // 
             this.txtProcess.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProcess.Location = new System.Drawing.Point(308, 101);
-            this.txtProcess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProcess.Margin = new System.Windows.Forms.Padding(4);
             this.txtProcess.Multiline = true;
             this.txtProcess.Name = "txtProcess";
             this.txtProcess.Size = new System.Drawing.Size(372, 44);
@@ -474,7 +486,7 @@
             this.productTab.Controls.Add(this.pictureBoxCodeOutput);
             this.productTab.Controls.Add(this.btnBarcode);
             this.productTab.Location = new System.Drawing.Point(4, 32);
-            this.productTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.productTab.Margin = new System.Windows.Forms.Padding(4);
             this.productTab.Name = "productTab";
             this.productTab.Size = new System.Drawing.Size(756, 572);
             this.productTab.TabIndex = 2;
@@ -486,7 +498,7 @@
             this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Location = new System.Drawing.Point(651, 4);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(66, 51);
             this.btnSave.TabIndex = 4;
@@ -503,7 +515,7 @@
             this.btnQrcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQrcode.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnQrcode.Location = new System.Drawing.Point(536, 497);
-            this.btnQrcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQrcode.Margin = new System.Windows.Forms.Padding(4);
             this.btnQrcode.Name = "btnQrcode";
             this.btnQrcode.Size = new System.Drawing.Size(183, 50);
             this.btnQrcode.TabIndex = 3;
@@ -515,7 +527,7 @@
             // 
             this.txtCodeInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodeInput.Location = new System.Drawing.Point(164, 429);
-            this.txtCodeInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodeInput.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodeInput.Multiline = true;
             this.txtCodeInput.Name = "txtCodeInput";
             this.txtCodeInput.Size = new System.Drawing.Size(552, 37);
@@ -527,7 +539,7 @@
             // 
             this.pictureBoxCodeOutput.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxCodeOutput.Location = new System.Drawing.Point(38, 64);
-            this.pictureBoxCodeOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxCodeOutput.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxCodeOutput.Name = "pictureBoxCodeOutput";
             this.pictureBoxCodeOutput.Size = new System.Drawing.Size(680, 320);
             this.pictureBoxCodeOutput.TabIndex = 1;
@@ -543,7 +555,7 @@
             this.btnBarcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBarcode.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBarcode.Location = new System.Drawing.Point(284, 497);
-            this.btnBarcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.btnBarcode.Name = "btnBarcode";
             this.btnBarcode.Size = new System.Drawing.Size(200, 50);
             this.btnBarcode.TabIndex = 0;
@@ -555,15 +567,15 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btnSRTF
+            // btnHRRN
             // 
-            this.btnSRTF.Location = new System.Drawing.Point(24, 169);
-            this.btnSRTF.Name = "btnSRTF";
-            this.btnSRTF.Size = new System.Drawing.Size(172, 111);
-            this.btnSRTF.TabIndex = 13;
-            this.btnSRTF.Text = "SRTF";
-            this.btnSRTF.UseVisualStyleBackColor = true;
-            this.btnSRTF.Click += new System.EventHandler(this.btnSRTF_Click);
+            this.btnHRRN.Location = new System.Drawing.Point(520, 169);
+            this.btnHRRN.Name = "btnHRRN";
+            this.btnHRRN.Size = new System.Drawing.Size(172, 111);
+            this.btnHRRN.TabIndex = 14;
+            this.btnHRRN.Text = "HRRN";
+            this.btnHRRN.UseVisualStyleBackColor = true;
+            this.btnHRRN.Click += new System.EventHandler(this.btnHRRN_Click);
             // 
             // CpuScheduler
             // 
@@ -574,7 +586,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "CpuScheduler";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -633,5 +645,6 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnSRTF;
+        private System.Windows.Forms.Button btnHRRN;
     }
 }

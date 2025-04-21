@@ -365,6 +365,7 @@ namespace CpuSchedulingWinForms
             int[] indices = Enumerable.Range(0, np).ToArray();
             int[] sortedIdx = new int[np];
             double current = 0;
+            int nextP = 0; //next task index in sorted list [order by arrival time-- ascending]
             int completed = 0;
             double[] finish = new double[np];
 
@@ -392,18 +393,20 @@ namespace CpuSchedulingWinForms
                     remain[i] = burst[i];
                 }
                 //Sort -> Ascend based on arrival time. The value in the following array indicate the order by AT, and value means the PID
-                sortedIdx = indices.OrderBy(idx => arrival[idx]).ToArray();
-                //time unit: Discrete -> 1s
+                sortedIdx = indices.OrderBy(idx => arrival[idx]).ToArray();  
+                //arrival[rank# 0,1,2,...]
                 while (completed < np) 
-                {   
+                {
+                    while (nextP < np && arrival[sortedIdx[nextP]] <= current) 
+                    {
+                        nextP++;
+                    }
                     int idx = -1;   //Execute PID
                     double min = double.MaxValue;
-                    //Scope: arrival < current, find the min remain     Result: we get idx (arrival and min Remain Time)
-                    foreach (int j in sortedIdx) 
+                    //Scope: arrival list  find the min remain     Result: we get idx (arrival and min Remain Time)
+                    for (int k = 0; k < nextP; k++) 
                     {
-                        //Loop from small to large, once out of the current time bound, then no need to sort
-                        if (arrival[j] > current)
-                            break;
+                        int j = sortedIdx[k];
                         if (remain[j] > 0 && remain[j] < min) 
                         {
                             min = remain[j];
@@ -411,37 +414,140 @@ namespace CpuSchedulingWinForms
                         }
                     }
                     //Execution Part
-                    //In the arrival list, no process
-                    if (idx == -1) 
+                    //In the arrival list, no process -> jump to next arrival 
+                    double nextArrivalTime = (nextP < np) ? arrival[sortedIdx[nextP]] : double.PositiveInfinity;
+                    if (idx == -1 && nextP < np) 
                     {
-                        current++;
+                        current = nextArrivalTime;
                         continue;
                     }
-                    //Execute Unit Time 
-                    remain[idx]--;
-                    current++;
-                    //One process complete
-                    if (remain[idx] == 0) 
+                    if (idx == -1 && nextP == np) 
+                    {
+                        break;
+                    }
+                    //current task done time
+                    double doneTime = current + remain[idx];
+                    //find the next key timing: Execute till next task arrived or already done before next arrival
+                    double nextEvent = Math.Min(nextArrivalTime, doneTime);
+                    double delta = nextEvent - current;
+                    remain[idx] -= delta;
+                    current = nextEvent;
+                    //reamin[idx] is 0 (binary error)
+                    if (Math.Abs(remain[idx]) < 1e-9) 
                     {
                         completed++;
                         finish[idx] = current;
                         turnaround[idx] = finish[idx] - arrival[idx];
                         wait[idx] = turnaround[idx] - burst[idx];
-                    }
+                    }                
                 }
-                for (int temp = 0; temp < np; temp++) 
-                {
-                    TotalWait += wait[temp];
-                    TotalTurnaround += turnaround[temp];
-                }
-                averageWaitTime = Convert.ToInt64(TotalWait * 1.0 / np);
-                averageTurnaroundTime = Convert.ToInt64(TotalTurnaround * 1.0 / np);
+                TotalWait = wait.Sum();
+                TotalTurnaround = turnaround.Sum();
+                averageWaitTime = TotalWait / np;
+                averageTurnaroundTime = TotalTurnaround / np;
                 double runtime = finish.Max();
                 double busytime = burst.Sum();
                 MessageBox.Show("Average wait time for " + np + " processes: " + averageWaitTime + " sec(s)", "", MessageBoxButtons.OK);
                 MessageBox.Show("Average turnaround time for " + np + " processes: " + averageTurnaroundTime + " sec(s)", "", MessageBoxButtons.OK);
                 Throughput = np / runtime;
                 Utilization = busytime / runtime * 100.0;
+                MessageBox.Show("Throughput for " + np + " processes: " + Throughput + " processes/s", "", MessageBoxButtons.OK);
+                MessageBox.Show("Utilization for " + np + " processes: " + Utilization + " %", "", MessageBoxButtons.OK);
+            }
+        }
+        public static void hrrnAlgorithm(string userInput) 
+        {
+            int np = Convert.ToInt32(userInput);
+            double[] arrival = new double[np];
+            double[] burst = new double[np];
+            double[] finish = new double[np];
+            bool[] isDone = new bool[np];
+            double[] wait = new double[np];
+            double[] turnaround = new double[np];
+            DialogResult result = MessageBox.Show("Highest Response Ratio Next", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes) 
+            {
+                //Get arrival burst==remain
+                for (int i = 0; i < np; i++)
+                {
+                    string arrivalInput =
+                            Microsoft.VisualBasic.Interaction.InputBox("Enter arrival time: ",
+                                                               "Arrival time for P" + (i + 1),
+                                                               "",
+                                                               -1, -1);
+
+                    arrival[i] = Convert.ToInt64(arrivalInput);
+
+                    string burstInput =
+                            Microsoft.VisualBasic.Interaction.InputBox("Enter burst time: ",
+                                                               "Burst time for P" + (i + 1),
+                                                               "",
+                                                               -1, -1);
+
+                    burst[i] = Convert.ToInt64(burstInput);
+                }
+                double current = 0;
+                int completed = 0;
+                int[] indices = Enumerable.Range(0, np).ToArray();
+                int[] sortedIdx = indices.OrderBy(i => arrival[i]).ToArray();
+                int nextP = 0;
+                while (completed < np) 
+                {
+                    //Arrival List [0 to nextP]
+                    while (nextP < np && arrival[sortedIdx[nextP]] <= current)
+                    {
+                        nextP++;
+                    }
+                    int idx = -1;
+                    double maxRatio = double.MinValue;
+                    //sort out the Max Response Ratio from arrival list
+                    for (int k = 0; k < nextP; k++) 
+                    {
+                        int j = sortedIdx[k];
+                        if (!isDone[j]) 
+                        {
+                            double waitTime = current - arrival[j];
+                            double responseRatio = (waitTime + burst[j]) / burst[j];
+                            if (responseRatio > maxRatio) 
+                            {
+                                maxRatio = responseRatio;
+                                idx = j;
+                            }
+                        }
+                    }
+                    //no task to run
+                    if (idx == -1) 
+                    {
+                        //jump to next arrival time
+                        if (nextP < np)
+                        {
+                            current = arrival[sortedIdx[nextP]];
+                            continue;
+                        }
+                        else 
+                        {
+                            break;
+                        }
+                    }
+                    //Execute Part
+                    current += burst[idx];
+                    finish[idx] = current;
+                    turnaround[idx] = finish[idx] - arrival[idx];
+                    wait[idx] = turnaround[idx] - burst[idx];
+                    isDone[idx] = true;
+                    completed++;
+                }
+                //Performance measure
+                double TotalWait = wait.Sum();                
+                double TotalTurnaround = turnaround.Sum();
+                double averageWaitTime = TotalWait / np;
+                double averageTurnaroundTime = TotalTurnaround / np;
+                MessageBox.Show("Average wait time for " + np + " processes: " + averageWaitTime + " sec(s)", "", MessageBoxButtons.OK);
+                MessageBox.Show("Average turnaround time for " + np + " processes: " + averageTurnaroundTime + " sec(s)", "", MessageBoxButtons.OK);
+                double runtime = finish.Max();
+                double busytime = burst.Sum();
+                double Throughput = np / runtime;
+                double Utilization = busytime / runtime * 100.0;
                 MessageBox.Show("Throughput for " + np + " processes: " + Throughput + " processes/s", "", MessageBoxButtons.OK);
                 MessageBox.Show("Utilization for " + np + " processes: " + Utilization + " %", "", MessageBoxButtons.OK);
             }
